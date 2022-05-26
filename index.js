@@ -22,7 +22,7 @@ app.get("/", function(req, res) {
 
 // your first API endpoint... 
 app.get("/api/:date?", function(req, res) {
-  const days = ['Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat', 'Sun'];
+  const days = ['Mon', 'Tues', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
   const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', ' Oct', 'Nov', 'Dec'];
   let dateMain
   let { date } = req.params;
