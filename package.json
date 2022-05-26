@@ -1,0 +1,14 @@
+{
+	"author": "Miguel Huayhua",
+	"name": "timestamp-miguelhuayhua",
+	"version": "0.0.1",
+	"description": "Task 1, freeCodeCamp",
+	"main": "index.js",
+	"scripts": {
+		"start": "node index.js"
+	},
+	"dependencies": {
+		"express": "^4.12.4",
+		"cors": "^2.8.0"
+	}
+}
