@@ -38,13 +38,14 @@ app.get("/api/:date?", function(req, res) {
   let minutes = dateMain.getMinutes() < 10 ? '0' + dateMain.getMinutes() : dateMain.getMinutes();
 
   let seconds = dateMain.getSeconds() < 10 ? '0' + dateMain.getSeconds() : dateMain.getSeconds();
+  let day = dateMain.getDate() < 10 ? '0' + dateMain.getDate() : dateMain.getDate();
   if (dateMain.toString() == 'Invalid Date') {
     res.json({ error: 'Invalid Date' })
   }
   else {
     res.json({
       unix: dateMain.getTime(),
-      utc: `${days[dateMain.getDay() - 1]}, ${dateMain.getDate()} ${months[dateMain.getMonth()]} ${dateMain.getFullYear()} ${hours}:${minutes}:${seconds} GMT`
+      utc: `${days[dateMain.getDay() - 1]}, ${day} ${months[dateMain.getMonth()]} ${dateMain.getFullYear()} ${hours}:${minutes}:${seconds} GMT`
     });
   }
 
