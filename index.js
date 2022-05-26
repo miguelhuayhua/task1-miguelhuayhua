@@ -12,7 +12,7 @@ app.use(cors({ optionsSuccessStatus: 200 }));  // some legacy browsers choke on 
 app.use(express.urlencoded({ extended: false }))
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.json());
-app.use('/public',express.static('public'));
+app.use(express.static('public'));
 
 // http://expressjs.com/en/starter/basic-routing.html
 app.get("/", function(req, res) {
@@ -22,13 +22,14 @@ app.get("/", function(req, res) {
 
 // your first API endpoint... 
 app.get("/api/:date?", function(req, res) {
-  const days = ['Mon', 'Tues', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+  const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
   const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', ' Oct', 'Nov', 'Dec'];
   let dateMain
   let { date } = req.params;
+  console.log(date)
   if (date != undefined) {
-    date = date.includes('-') ? date : +date;
-    dateMain = new Date(date);
+    if (date.includes('-') || date.includes(' ')) dateMain = new Date(Date.parse(date));
+    else dateMain = new Date(+date);
 
   }
   else {
