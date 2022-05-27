@@ -22,11 +22,10 @@ app.get("/", function(req, res) {
 
 // your first API endpoint... 
 app.get("/api/:date?", function(req, res) {
-  const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', ' Oct', 'Nov', 'Dec'];
+  const days = [ 'Sun','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   let dateMain
   let { date } = req.params;
-  console.log(date)
   if (date != undefined) {
     if (date.includes('-') || date.includes(' ')) dateMain = new Date(Date.parse(date));
     else dateMain = new Date(+date);
@@ -44,9 +43,10 @@ app.get("/api/:date?", function(req, res) {
     res.json({ error: 'Invalid Date' })
   }
   else {
+    
     res.json({
       unix: dateMain.getTime(),
-      utc: `${days[dateMain.getDay() - 1]}, ${day} ${months[dateMain.getMonth()]} ${dateMain.getFullYear()} ${hours}:${minutes}:${seconds} GMT`
+      utc: `${days[dateMain.getDay() ]}, ${day} ${months[dateMain.getMonth()]} ${dateMain.getFullYear()} ${hours}:${minutes}:${seconds} GMT`
     });
   }
 
